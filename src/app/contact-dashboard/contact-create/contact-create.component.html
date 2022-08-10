@@ -1,0 +1,150 @@
+<!-- <header class="jumbotron" style="padding:2%;">
+    <h3 class="text-center">Create Contact</h3>
+  </header>
+  <div class="container">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+        <div class="form-group">
+          <label for="name">ID:</label>
+          <input type="text" formControlName="id" id="id" class="form-control" placeholder="ID" required [ngClass]="{ 'is-invalid': f.id.touched && f.id.errors, 'is-valid': f.id.valid }">
+          <div *ngIf="f.id.touched && f.id.errors" class="invalid-feedback">
+            <div *ngIf="f.id.errors.required">ID is required!</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+
+      <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+        <div class="form-group">
+          <label for="firstName">First Name:</label>
+          <input type="text" [ngClass]="{ 'is-invalid': f.firstName.touched && f.firstName.errors, 'is-valid': f.firstName.valid }" formControlName="firstName" id="email" class="form-control" placeholder="Email" required>
+          <div *ngIf="f.firstName.touched && f.firstName.errors" class="invalid-feedback">
+            <div *ngIf="f.firstName.errors.required">Email is required!</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+            <div class="form-group">
+              <label for="lastName">Last Name:</label>
+              <input type="text" [ngClass]="{ 'is-invalid': f.lastName.touched && f.lastName.errors, 'is-valid': f.lastName.valid }" formControlName="lastName" id="email" class="form-control" placeholder="Email" required>
+              <div *ngIf="f.lastName.touched && f.lastName.errors" class="invalid-feedback">
+                <div *ngIf="f.lastName.errors.required">Last Name is required!</div>
+              </div>
+            </div>
+          </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+            <div class="form-group">
+              <label for="phone">Phone Name:</label>
+              <input type="text" [ngClass]="{ 'is-invalid': f.phone.touched && f.phone.errors, 'is-valid': f.phone.valid }" formControlName="phone" id="email" class="form-control" placeholder="Email" required>
+              <div *ngIf="f.phone.touched && f.phone.errors" class="invalid-feedback">
+                <div *ngIf="f.phone.errors.required">Phone No. is required!</div>
+                <div *ngIf="f.phone.errors.pattern">Numeric Only Accepted!</div>
+                <div *ngIf="f.phone.errors.maxlength">Phone No. is not valid format!</div>
+              </div>
+            </div>
+          </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+        <div class="form-group">
+          <button type="submit" [disabled]="registerForm.invalid" class="btn btn-primary"> Register </button>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"></div>
+    </div>
+    </form>
+  </div> -->
+
+<h1 *ngIf="isAddMode">Add Contact</h1>
+<h1 *ngIf="!isAddMode">Edit Contact</h1>
+<form
+    [formGroup]="registerForm"
+    (ngSubmit)="onSubmit()"
+>
+    <div class="form-row">
+        <!-- <div class="form-group col-5">
+            <label>ID</label>
+            <input
+                type="text"
+                formControlName="id"
+                class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.id.errors }"
+            />
+            <div
+                *ngIf="submitted && f.id.errors"
+                class="invalid-feedback"
+            >
+                <div *ngIf="f.id.errors.required">ID is required</div>
+            </div>
+        </div> -->
+        <div class="form-group col-5">
+            <label>First Name</label>
+            <input
+                type="text"
+                formControlName="firstName"
+                class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"
+            />
+            <div
+                *ngIf="submitted && f.firstName.errors"
+                class="invalid-feedback"
+            >
+                <div *ngIf="f.firstName.errors.required">First Name is required</div>
+            </div>
+        </div>
+        <div class="form-group col-5">
+            <label>Last Name</label>
+            <input
+                type="text"
+                formControlName="lastName"
+                class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }"
+            />
+            <div
+                *ngIf="submitted && f.lastName.errors"
+                class="invalid-feedback"
+            >
+                <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+            </div>
+        </div>
+        <div class="form-group col-5">
+            <label>Phone No.</label>
+            <input
+                type="text"
+                formControlName="phone"
+                class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.phone.errors }"
+            />
+            <div
+                *ngIf="submitted && f.phone.errors"
+                class="invalid-feedback"
+            >
+            <div *ngIf="f.phone.errors.required">Phone No. is required!</div>
+            <div *ngIf="f.phone.errors.pattern">Numeric Only Accepted!</div>
+            <div *ngIf="f.phone.errors.maxlength">Phone No. is not valid format!</div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <button
+            [disabled]="loading"
+            class="btn btn-primary"
+        >
+            <span
+                *ngIf="loading"
+                class="spinner-border spinner-border-sm mr-1"
+            ></span>
+            Save
+        </button>
+        <a
+            routerLink="/contacts"
+            class="btn btn-link"
+        >Cancel</a>
+    </div>
+</form>

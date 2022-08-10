@@ -1,0 +1,15 @@
+.table-responsive {
+    max-height: 45em;
+    .data-list {
+        .data-list-tr:hover {
+            background-color: #f6f6f6;
+        }
+        .detail-button {
+            color: #006473;
+        }
+        .detail-button:hover {
+            border-bottom: 2px solid black;
+        }
+    }
+    
+}

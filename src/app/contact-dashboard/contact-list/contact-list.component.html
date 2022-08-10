@@ -1,0 +1,70 @@
+<!-- <div class="table-responsive">
+    <table class="table table-borderless table-hover data-list">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Phone</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngIf="(contactDashboardService.constactList$ | async) as dataSource; else noDataFound">
+            <tr class="data-list-tr" *ngFor="let data of dataSource">
+            <td>{{data.id}}</td>
+            <td>{{data.firstName}}</td>
+            <td>{{data.lastName}}</td>
+            <td>{{data.phone}}</td>
+            <td>
+                <button type="button" class="btn btn-outline-light detail-button fw-bold" (click)="deleteContact(data.id)">
+                Delete
+                </button>
+            </td>
+            </tr>
+        </ng-container>
+        <ng-template #noDataFound>
+            <tr class="data-list-tr">
+                No Data Found
+            </tr>
+        </ng-template>
+      </tbody>
+    </table>
+  </div> -->
+  <h1>Contact List</h1>
+<a routerLink="add" class="btn btn-sm btn-success mb-2">Add Contact</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="width: 30%">ID</th>
+            <th style="width: 30%">First Name</th>
+            <th style="width: 30%">Last Name</th>
+            <th style="width: 30%">Phone No.</th>
+            <th style="width: 10%"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <ng-container *ngIf="(contactDashboardService.constactList$ | async) as dataSource; else noDataFound">
+            <tr class="data-list-tr" *ngFor="let data of dataSource">
+            <td>{{data.id}}</td>
+            <td>{{data.firstName}}</td>
+            <td>{{data.lastName}}</td>
+            <td>{{data.phone}}</td>
+            <td style="white-space: nowrap">
+                <a routerLink="edit/{{data.id}}" class="btn btn-sm btn-primary mr-1">Edit</a>
+                <button (click)="deleteContact(data.id)" class="btn btn-sm btn-danger btn-delete-contact ms-1" 
+                [disabled]="data.isDeleting">
+                    <span *ngIf="data.isDeleting" class="spinner-border spinner-border-sm"></span>
+                    <span *ngIf="!data.isDeleting">Delete</span>
+                </button>
+            </td>
+            </tr>
+        </ng-container>
+        <ng-template #noDataFound>
+            <tr>
+                <td colspan="4" class="text-center">
+                    <span class="spinner-border spinner-border-lg align-center"></span>
+                </td>
+            </tr>
+        </ng-template>
+    </tbody>
+</table>
